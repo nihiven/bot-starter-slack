@@ -53,7 +53,7 @@ module.exports = function(controller) {
         else {
           user.tasks = [];
 
-          controller.storage.users.save(user, function(err,saved) {
+          controller.storage.users.save(user, function(err, saved) {
             if (err) {
               bot.reply(message, 'I experienced an error clearing your tasks: ' + err);
             } else {
@@ -83,7 +83,7 @@ module.exports = function(controller) {
 
             user.tasks.push(newtask);
 
-            controller.storage.users.save(user, function(err,saved) {
+            controller.storage.users.save(user, function(err, saved) {
 
                 if (err) {
                     bot.reply(message, 'I experienced an error adding your task: ' + err);
