@@ -66,7 +66,7 @@ module.exports = function(controller) {
                     bot.reply(message, 'I experienced an error adding your task: ' + err);
                 } else {
                     bot.api.reactions.add({
-                        name: 'thumbsup',
+                        name: 'thumbsup_all',
                         channel: message.channel,
                         timestamp: message.ts
                     });
