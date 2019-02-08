@@ -46,13 +46,24 @@ module.exports = function(controller) {
     });
 
     controller.hears(['clear'], 'direct_message', function(bot, message) {
-      controller.storage.users.get(message.user, function(err, user){
+      controller.storage.users.get(message.user, function(err, user) {
         if (!user || !user.tasks || user.tasks.length == 0) {
           bot.reply(message, 'You do not have any tasks, buddy.');
         }
         else {
           user.tasks = [];
-          bot.reply(message, 'Got no more taks for you buddy.');
+
+          controller.storage.users.save(user, function(err,saved) {
+            if (err) {
+              bot.reply(message, 'I experienced an error clearing your tasks: ' + err);
+            } else {
+              bot.api.reactions.add({
+                  name: 'thumbsup_all',
+                  channel: message.channel,
+                  timestamp: message.ts
+              });
+            }
+          });
         }
       });
     });
