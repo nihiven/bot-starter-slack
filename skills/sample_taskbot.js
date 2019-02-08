@@ -45,6 +45,18 @@ module.exports = function(controller) {
 
     });
 
+    controller.hears(['clear'], 'direct_message', function(bot, message) {
+      controller.storage.users.get(message.user, function(err, user){
+        if (!user || !user.tasks || user.tasks.length == 0) {
+          bot.reply(message, 'You do not have any tasks, buddy.');
+        }
+        else {
+          user.tasks = [];
+          bot.reply(message, 'Got no more taks for you buddy.');
+        }
+      });
+    });
+
     // listen for a user saying "add <something>", and then add it to the user's list
     // store the new list in the storage system
     controller.hears(['add (.*)'],'direct_message,direct_mention,mention', function(bot, message) {
