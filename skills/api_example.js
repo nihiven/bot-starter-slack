@@ -1,19 +1,27 @@
 /*
-
-WHAT IS THIS?
-
-This module demonstrates simple uses of Botkit's `hears` handler functions.
-
-In these examples, Botkit is configured to listen for certain phrases, and then
-respond immediately with a single line response.
-
+2019-02-08: jb - the beginning
 */
 
 var wordfilter = require('wordfilter');
+var request = new XMLHttpRequest();
 
 module.exports = function(controller) {
-    controller.hears(['^man (.*)','^man'], 'direct_message,direct_mention', function(bot, message) {
-      bot.replyWithTyping(message, 'I am just a man.')
-    });
+  dataz = "nada";
+
+  // Open a new connection, using the GET request on the URL endpoint
+  request.open('GET', 'https://jsonplaceholder.typicode.com/todos/1', true);
+
+  request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    dataz = data.title;
+  }
+
+  // Send request
+  request.send();
+
+  controller.hears(['^man (.*)','^man'], 'direct_message,direct_mention', function(bot, message) {
+    bot.replyWithTyping(message, 'Dataz: ' + dataz);
+  });
 
 };
