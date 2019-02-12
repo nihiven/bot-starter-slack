@@ -12,36 +12,33 @@ respond immediately with a single line response.
 var wordfilter = require('wordfilter');
 
 module.exports = function(controller) {
-  controller.hears(['^man (.*)','^man'], 'direct_message,direct_mention', function(bot, message) {
-    bot.replyWithTyping(message, 'I am just a man.')
-  });
-
-  controller.hears('interactive', 'direct_message', function(bot, message) {
+  controller.hears('^\!lunch (.*)', 'direct_message', function(bot, message) {
 
     bot.reply(message, {
       attachments:[{
         title: 'Let\'s Do Lunch',
         callback_id: '123',
         attachment_type: 'default',
-        actions: [{
-          "name":"yes",
-          "text": "Random Place",
-          "value": "rand-show",
-          "type": "button",
-        },
-        {
-          "name":"no",
-          "text": "Edit Lists",
-          "value": "list-edit",
-          "type": "button",
-        },
-        {
-          "name":"no",
-          "text": "Random: All",
-          "value": "rand-all",
-          "type": "button",
-        }
-      ]
+        actions: [
+          {
+            "name":"yes",
+            "text": "Random Place",
+            "value": "rand-show",
+            "type": "button",
+          },
+          {
+            "name":"no",
+            "text": "Quick Pick",
+            "value": "rand-all",
+            "type": "button",
+          },
+          {
+            "name":"no",
+            "text": "Edit Lists",
+            "value": "list-edit",
+            "type": "button",
+          },
+        ]
       }]
     });
   });
