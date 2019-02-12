@@ -12,7 +12,7 @@ respond immediately with a single line response.
 var wordfilter = require('wordfilter');
 
 module.exports = function(controller) {
-  controller.hears('^\!lunch (.*)', 'direct_message', function(bot, message) {
+  controller.hears('lunch', 'direct_message', function(bot, message) {
 
     bot.reply(message, {
       attachments:[{
