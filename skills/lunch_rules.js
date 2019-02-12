@@ -20,20 +20,28 @@ module.exports = function(controller) {
 
     bot.reply(message, {
       attachments:[{
-        title: 'Do you want to interact with my buttons?',
+        title: 'Let\'s Do Lunch',
         callback_id: '123',
         attachment_type: 'default',
         actions: [{
           "name":"yes",
-          "text": "Yes",
-          "value": "yes",
+          "text": "Random Place",
+          "value": "rand-show",
           "type": "button",
-        }, {
+        },
+        {
           "name":"no",
-          "text": "No",
-          "value": "no",
+          "text": "Edit Lists",
+          "value": "list-edit",
           "type": "button",
-        }]
+        },
+        {
+          "name":"no",
+          "text": "Random: All",
+          "value": "rand-all",
+          "type": "button",
+        }
+      ]
       }]
     });
   });
