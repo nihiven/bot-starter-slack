@@ -1,0 +1,85 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jquery": true
+    },
+    "plugins": [
+      "meteor",
+      "html"
+    ],
+    "extends": ["plugin:meteor/recommended", "eslint:recommended", "airbnb"],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "rules": {
+        "import/no-extraneous-dependencies": 0,
+        "import/no-unresolved": 0,
+        "import/extensions": 0,
+        "import/no-absolute-path": 0,
+
+        "arrow-body-style": ["error", "always"],
+        "no-undef": 0,
+        "no-underscore-dangle": 0,
+        "object-curly-spacing": ["error", "always", { "objectsInObjects": false }],
+        "object-curly-newline": ["error", { "minProperties": 1 }],
+
+        "meteor/no-dom-lookup-on-created": 2,
+        "meteor/eventmap-params": 2,
+        "meteor/no-template-lifecycle-assignments": 2,
+        "meteor/no-session": 2,
+        "meteor/template-names": [2, "camel-case"],
+        "meteor/scope-dom-lookups": 0,
+        "meteor/audit-argument-checks": 1,
+        "semi": [
+          2,
+          "always"
+        ],
+        "brace-style": [
+          2,
+          "1tbs",
+          { "allowSingleLine": true }
+        ],
+        "spaced-comment": [
+          "error",
+          "always",
+          { "exceptions": ["-", "+"] }
+        ],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 2,
+            "maxBOF": 1
+          }
+        ],
+        "key-spacing": [
+          "error",
+          { "beforeColon": false }
+        ],
+        "object-curly-newline": [
+          "error",
+          { "multiline": true }
+        ],
+        "indent": [
+            "error",
+            2
+        ],
+        "no-console": 1,
+        "eol-last": 2,
+        "comma-dangle": [
+          "error", {
+            "arrays": "always-multiline",
+            "objects": "always-multiline",
+            "imports": "never",
+            "exports": "always-multiline",
+            "functions": "always-multiline"
+          }
+        ],
+        "linebreak-style": 0,
+        "quotes": [
+            "error",
+            "single"
+        ]
+    }
+}

@@ -43,4 +43,38 @@ module.exports = function(controller) {
     });
   });
 
+  controller.on('interactive_message_callback', function(bot, message) {
+    bot.replyInteractive(message, {
+      text: '...',
+      attachments: [{
+        title: 'My buttons',
+        callback_id: '123',
+        attachment_type: 'default',
+        actions:
+        [
+          {
+            "name":"yes",
+            "text": "Yes!",
+            "value": "yes",
+            "type": "button",
+          },
+          {
+            "text": "No!",
+            "name": "no",
+            "value": "delete",
+            "style": "danger",
+            "type": "button",
+            "confirm":
+            {
+              "title": "Are you sure?",
+              "text": "This will do something!",
+              "ok_text": "Yes",
+              "dismiss_text": "No"
+            }
+          },
+        ]
+      }]
+    });
+  });
+
 };
