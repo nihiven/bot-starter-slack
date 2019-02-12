@@ -13,19 +13,6 @@ var wordfilter = require('wordfilter');
 
 module.exports = function(controller) {
 
-  controller.hears('test_dialog', 'direct_message', function(bot, message) {
-    var dialog = bot.createDialog(
-         'Title of dialog',
-         'callback_id',
-         'Submit'
-       ).addText('Text','text','some text')
-        .addSelect('Select','select',null,[{label:'Foo',value:'foo'},{label:'Bar',value:'bar'}],{placeholder: 'Select One'})
-        .addTextarea('Textarea','textarea','some longer text',{placeholder: 'Put words here'})
-        .addUrl('Website','url','http://botkit.ai');
-
-    bot.replyWithDialog(message, dialog.asObject());
-  }
-
   controller.hears('lunch', 'direct_message', function(bot, message) {
     bot.reply(message, {
       attachments:[{
