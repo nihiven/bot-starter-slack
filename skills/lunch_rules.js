@@ -83,7 +83,7 @@ function showMenu(bot, message) {
 }
 
 function showLists(bot, message) {
-  bot.replyInteractive(message, {
+  bot.reply(message, {
     text: '...',
     attachments: [{
       title: 'Let\'s Do Lunch',
