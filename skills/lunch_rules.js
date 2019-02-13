@@ -18,15 +18,18 @@ module.exports = function(controller) {
   });
 
   controller.on('interactive_message_callback', function(bot, message) {
-    bot.reply(message, message.actions[0].name);
-    bot.reply(message, message.actions[0].value);
+    _n = message.actions[0].name;
+    _v = message.actions[0].value;
 
-    if (message.actions[0].name == "who") {
-      randomPlace(bot, message, message.actions[0].value);
+    bot.reply(message, _n);
+    bot.reply(message, _v);
+
+    if (_n == "who") {
+      randomPlace(bot, message, _v);
     }
 
-    if (message.actions[0].name == "menu") {
-      if (message.actions[0].value == "list-show") {
+    if (_n == "menu") {
+      if (_v == "list-show") {
         showList(bot, message);
       }
     }
