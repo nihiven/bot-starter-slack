@@ -20,13 +20,12 @@ module.exports = function(controller) {
   controller.on('interactive_message_callback', function(bot, message) {
 
     if (message.actions[0].name == "who") {
-      va = message.actions[0].value;
-      randomPlace(bot, message, va);
+      randomPlace(bot, message, message.actions[0].value);
     }
 
     if (message.actions[0].name == "menu") {
       if (message.actions[0].value == "list-show") {
-        showList(box, message)
+        showList(bot, message);
       }
     }
 
