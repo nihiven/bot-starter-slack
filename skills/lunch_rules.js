@@ -21,17 +21,8 @@ module.exports = function(controller) {
     _n = message.actions[0].name;
     _v = message.actions[0].value;
 
-    bot.reply(message, _n);
-    bot.reply(message, _v);
-
     if (_n == "who") {
       randomPlace(bot, message, _v);
-    }
-
-    if (_n == "menu") {
-      if (_v == "list-show") {
-        showLists(bot, message);
-      }
     }
 
   });
@@ -39,15 +30,15 @@ module.exports = function(controller) {
 };
 
 function randomPlace(bot, message, list) {
-  if (list == "everyone") {
+  if (list == "pick-all") {
     bot.reply(message, "Five Guys");
   }
 
-  if (list == "no-jb") {
+  if (list == "pick-nojb") {
     bot.reply(message, "Greek");
   }
 
-  if (list == "no-zack") {
+  if (list == "pick-nozack") {
     bot.reply(message, "PIZZA");
   }
 }
@@ -60,56 +51,24 @@ function showMenu(bot, message) {
       attachment_type: 'default',
       actions: [
         {
-          "name":"menu",
-          "text": "Who's going?",
-          "value": "list-show",
+          "name":"who",
+          "text": "Everyone",
+          "value": "pick-all",
           "type": "button",
         },
         {
-          "name":"menu",
-          "text": "Quick Pick",
-          "value": "rand-all",
+          "name":"who",
+          "text": "No JB",
+          "value": "pick-nojb",
           "type": "button",
         },
         {
-          "name":"menu",
-          "text": "Edit Lists",
-          "value": "list-edit",
+          "name":"who",
+          "text": "No Zack",
+          "value": "pick-nozack",
           "type": "button",
         },
       ]
     }]
   });
-}
-
-function showLists(bot, message) {
-  bot.replyInteractive(message, {
-    text: '...',
-    attachments: [{
-      title: 'Let\'s Do Lunch',
-      callback_id: '123',
-      attachment_type: 'default',
-      actions:
-      [
-        {
-          "text": "Everyone",
-          "name": "who",
-          "value": "everyone",
-          "type": "button",
-        },
-        {
-          "text": "No JB",
-          "name": "who",
-          "value": "no-jb",
-          "type": "button",
-        },
-        {
-          "text": "No Zack",
-          "name": "who",
-          "value": "no-zack",
-          "type": "button",
-        },
-      ]
-    }]
-  }); // reply
 }
