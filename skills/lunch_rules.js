@@ -24,15 +24,13 @@ module.exports = function(controller) {
     bot.reply(message, _n);
     bot.reply(message, _v);
 
-    showList(bot, message);
-
     if (_n == "who") {
       randomPlace(bot, message, _v);
     }
 
     if (_n == "menu") {
       if (_v == "list-show") {
-        showList(bot, message);
+        showLists(bot, message);
       }
     }
 
