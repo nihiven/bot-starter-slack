@@ -18,6 +18,8 @@ module.exports = function(controller) {
   });
 
   controller.on('interactive_message_callback', function(bot, message) {
+    bot.reply(message, message.actions[0].name);
+    bot.reply(message, message.actions[0].value);
 
     if (message.actions[0].name == "who") {
       randomPlace(bot, message, message.actions[0].value);

@@ -165,7 +165,7 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
 function usage_tip() {
     console.log('~~~~~~~~~~');
-    console.log('Botkit Starter Kit');
+    console.log('CCBH Advanced AI');
     console.log('Execute your bot application like this:');
     console.log('clientId=<MY SLACK CLIENT ID> clientSecret=<MY CLIENT SECRET> PORT=3000 node bot.js');
     console.log('Get Slack app credentials here: https://api.slack.com/apps')
