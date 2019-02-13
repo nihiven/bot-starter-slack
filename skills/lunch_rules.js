@@ -86,7 +86,7 @@ function showLists(bot, message) {
   bot.replyInteractive(message, {
     text: '...',
     attachments: [{
-      title: 'Who is going?',
+      title: 'Let\'s Do Lunch',
       callback_id: '123',
       attachment_type: 'default',
       actions:
