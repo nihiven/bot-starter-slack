@@ -44,6 +44,8 @@ module.exports = function(controller) {
   });
 
   controller.on('interactive_message_callback', function(bot, message) {
+
+    bot.reply(message, message.actions[0].name);
     bot.replyInteractive(message, {
       text: '...',
       attachments: [{
@@ -53,24 +55,22 @@ module.exports = function(controller) {
         actions:
         [
           {
-            "name":"yes",
-            "text": "Yes!",
-            "value": "yes",
+            "text": "Everyone",
+            "name": "who",
+            "value": "everyone",
             "type": "button",
           },
           {
-            "text": "No!",
-            "name": "no",
-            "value": "delete",
-            "style": "danger",
+            "text": "No JB",
+            "name": "who",
+            "value": "nojb",
             "type": "button",
-            "confirm":
-            {
-              "title": "Are you sure?",
-              "text": "This will do something!",
-              "ok_text": "Yes",
-              "dismiss_text": "No"
-            }
+          },
+          {
+            "text": "No Zack",
+            "name": "who",
+            "value": "nozack",
+            "type": "button",
           },
         ]
       }]
